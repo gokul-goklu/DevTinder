@@ -44,6 +44,21 @@ const app=express()
 //    res.send("this is just testing for params and routes")
 //  })
 
+
+//query useage
+
+//  app.get("/user",(req,res)=>{
+//     console.log(req.query)
+//    res.send("this is just testing for params and routes")
+//  })
+
+//param usage
+
+ app.get("/user/:id/:password",(req,res)=>{
+    console.log(req.params)
+   res.send("this is just testing for params and routes")
+ })
+
 app.listen(3000,()=>{
     console.log("server is done !!")
 })
