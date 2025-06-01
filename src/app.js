@@ -13,15 +13,36 @@ const app=express()
 //     res.send("The base page is not  loaded")
 // })
 
-app.get("/user",(req,res)=>{
-    res.send("this is specific to get user")
-})
+// app.get("/user",(req,res)=>{
+//     res.send("this is specific to get user")
+// })
 
 
-app.post("/user",(req,res)=>{
-    res.send("Data is saved in the DB")
-})
+// app.post("/user",(req,res)=>{
+//     res.send("Data is saved in the DB")
+// })
 
+//now the word 's' is optional here
+// app.get(/^\/u?ser$/,(req,res)=>{
+//     res.send("this is just testing for params and routes")
+// })
+
+//+ used to add as many 'u' the letter before +
+// app.get(/^\/u+ser$/,(req,res)=>{
+//     res.send("this is just testing for params and routes")
+// })
+
+//* should have 0 u or many u
+
+//any a in the url
+// app.get(/a/,(req,res)=>{
+//     res.send("this is just testing for params and routes")
+// })
+
+//anything ends with user
+//  app.get(/.*user$/,(req,res)=>{
+//    res.send("this is just testing for params and routes")
+//  })
 
 app.listen(3000,()=>{
     console.log("server is done !!")
