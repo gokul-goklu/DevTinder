@@ -46,18 +46,35 @@ const app=express()
 
 
 //query useage
+//http://localhost:3000/user?id=1212&pass=123456
 
 //  app.get("/user",(req,res)=>{
 //     console.log(req.query)
 //    res.send("this is just testing for params and routes")
 //  })
 
-//param usage
 
- app.get("/user/:id/:password",(req,res)=>{
-    console.log(req.params)
-   res.send("this is just testing for params and routes")
- })
+
+//param usage
+//http://localhost:3000/user/1212/123456
+
+//  app.get("/user/:id/:password",(req,res)=>{
+//     console.log(req.params)
+//    res.send("this is just testing for params and routes")
+//  })
+
+
+
+//Route handlers
+
+app.use("/user",(req,res,next)=>{
+  console.log("started")
+ 
+  res.send("sfvwd")
+   next()
+},(req,res)=>{
+res.send("starting it from 2")
+})
 
 app.listen(3000,()=>{
     console.log("server is done !!")
