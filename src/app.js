@@ -67,14 +67,32 @@ const app=express()
 
 //Route handlers
 
-app.use("/user",(req,res,next)=>{
-  console.log("started")
+// app.use("/user",(req,res,next)=>{
+//   console.log("started")
  
-  res.send("sfvwd")
-   next()
-},(req,res)=>{
-res.send("starting it from 2")
+ // res.send("sfvwd")//executes this to api and go to next handler if res is present its an err
+//    next()
+// },(req,res)=>{
+// res.send("starting it from 2")
+// })
+
+
+//Middlewares
+
+
+app.get("/user",(req,res,next)=>{
+  console.log("2nd one")
+  res.send("the 2nd ones response")
+  next()
 })
+
+
+app.get("/user",(req,res,next)=>{
+  console.log("1st dcw one")
+res.send("1st")
+})
+
+
 
 app.listen(3000,()=>{
     console.log("server is done !!")
