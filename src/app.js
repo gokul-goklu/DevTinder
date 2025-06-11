@@ -140,6 +140,20 @@ app.get('/user/login',(req,res)=>{
   res.send("login done from here")
 })
 
+//error handling
+app.get("/data",(req,res,next)=>{
+// try{
+  throw new Error("explicit error")
+// }
+// catch(err){
+//   res.status(500).send("something is wrong here")
+// }
+})
+
+app.use("/",(err,req,res,next)=>{
+  console.log(err.message)
+  res.status(401).send("err")
+})
 
 app.listen(3000,()=>{
     console.log("server is done !!")
