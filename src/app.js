@@ -80,18 +80,65 @@ const app=express()
 //Middlewares
 
 
-app.get("/user",(req,res,next)=>{
-  console.log("2nd one")
-  res.send("the 2nd ones response")
-  next()
+// app.get("/user",(req,res,next)=>{
+//   console.log("2nd one")
+//   res.send("the 2nd ones response")
+//   next()
+// })
+
+
+// app.get("/user",(req,res,next)=>{
+//   console.log("1st dcw one")
+// res.send("1st")
+// })
+
+
+//MIDDLEWARES - is a function or piece of code lies between req and res.Used to perform sideeffect logic.
+
+// app.get('/admin/allData',(req,res,next)=>{
+// const token="abcd";//should come from request jus now hardcoded
+// const auth=token==="abcd"
+// if(!auth){
+//   res.status(401).send("it is unauth")
+// }
+// else
+//   res.send("Response data is sent")
+// })
+
+
+// app.get('/admin/deleteData',(req,res,next)=>{
+// const token="abcd";//should come from request jus now hardcoded
+// const auth=token==="abcd"
+// if(!auth){
+//   res.status(401).send("it is unauth")
+// }
+// else
+//   res.send("data is deleted")
+// })
+
+//In the above instead of repeating the auth logic again and again
+
+const {middleAuth,userAuth}=require("./Utils/Middlewares/AuthMiddle")
+app.use("/admin",middleAuth)
+
+app.get('/admin/allData',(req,res,next)=>{
+  console.log("data")
+ res.send("Response data is sent")
 })
 
 
-app.get("/user",(req,res,next)=>{
-  console.log("1st dcw one")
-res.send("1st")
+app.get('/admin/deleteData',(req,res,next)=>{
+console.log("delete")
+  res.send("data is deleted")
 })
 
+app.get('/user',userAuth,(req,res)=>{
+  res.send("data user is done from here")
+})
+
+app.get('/user/login',(req,res)=>{
+  res.send("login done from here")
+})
 
 
 app.listen(3000,()=>{
